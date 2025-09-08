@@ -12,7 +12,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 const config = {
   title: "FlightControl",
   tagline: "Open Source Fleet Management for Edge Devices",
-  favicon: "img/favicon.png",
+  favicon: "img/flight-control-icon-full-color.png",
 
   // Set the production url of your site here
   url: "https://flightctl.github.io",
@@ -89,8 +89,9 @@ const config = {
       navbar: {
         // title: "My Site",
         logo: {
-          alt: "Example Logo",
-          src: "img/logo-text.png",
+          alt: "Flight Control Logo",
+          src: "img/flight-control-horizontal-logo-full-color.png",
+          srcDark: "img/flight-control-horizontal-logo-one-color-light-blue.png",
         },
         items: [
           {

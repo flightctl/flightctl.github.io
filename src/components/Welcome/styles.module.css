@@ -1,10 +1,20 @@
 /* Welcome Component Styles */
 
+.backgroundVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -9999;
+  object-fit: cover;
+}
+
 .welcome {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  padding: 0%;
+  padding: 0% 50% 0% 5%;
 }
 
 .viewport {
@@ -22,70 +32,39 @@
   }
 }
 
-.logoSize {
-  max-width: 50px;
-  align-self: center;
-  justify-self: center;
-}
-
 p {
   align-content: center;
   justify-content: center;
 }
 
-.welcomeGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-@media screen and (max-width: 768px) {
-  .welcomeGrid {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    gap: 1rem;
-  }
-}
-
 .welcomeInfo {
   display: flexbox;
   justify-content: center;
-  padding: 10%;
-  padding-left: 25%;
+  padding: 5%;
+  margin-right: 25%;
+  z-index: 1;
+  float: left;
 }
 
 .welcomeH1 {
   display: inline;
   font-weight: 500;
+  color: white;
+  font-size: 2.5rem;
 }
 
 .welcomeH2 {
   font-weight: 500;
-  padding-right: 10rem;
+  padding-right: 8rem;
   line-height: 1.4;
+  color: white;
+  font-size: 1.5rem;
 }
 
 @media screen and (max-width: 768px) {
   .welcomeH2 {
     padding: 0%;
     font-size: 1rem;
-  }
-}
-
-.welcomeImage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.logoFull {
-  width: 50%;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
-@media screen and (max-width: 768px) {
-  .logoFull {
-    display: none;
   }
 }
 
@@ -115,5 +94,5 @@ p {
 
 .staticButton:hover {
   transform: translateY(-1px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.30);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
