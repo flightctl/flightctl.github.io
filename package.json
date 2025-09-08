@@ -28,7 +28,8 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.8.1",
-    "@docusaurus/types": "^3.8.1"
+    "@docusaurus/types": "^3.8.1",
+    "markdown-link-check": "^3.13.7"
   },
   "browserslist": {
     "production": [
