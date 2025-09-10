@@ -19,11 +19,11 @@ At a high level, the image building process for bootc works as follows:
 3. Build, publish, and sign an **OS image (bootc)** using `podman` and `skopeo`.
 4. Build, publish, and sign an **OS disk image** using `bootc-image-builder` (bib) and `skopeo`.
 
-<img>
+<picture>
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/flightctl/flightctl/main/docs/images/image-building.svg"/>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/flightctl/flightctl/main/docs/images/image-building-dark.svg"/>
   <img alt="Diagram of image building process" src="https://raw.githubusercontent.com/flightctl/flightctl/main/docs/images/image-building.svg"/>
-</img>
+</picture>
 
 The OS disk image is used to image (or "flash") a device when it is provisioned. For subsequent device updates, only the OS image (bootc) is required. This is because bootc is a *file system* image, that is it contains just the files in the file system including their attributes, but the disk layout (partitions, volumes) and file systems need to have been created first. The OS disk image includes everything, the disk layout, bootloader, file systems, and the files in the OS image (bootc). It can therefore be written verbatim to the device's drive.
 
