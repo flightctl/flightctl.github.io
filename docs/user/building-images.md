@@ -7,7 +7,7 @@ Image-based OSes allow the whole OS (and optionally also OS configuration and ap
 * It minimizes potential drift between what has been thoroughly tested and what is deployed to a large number of devices.
 * It minimizes the risk of failed updates that require expensive maintenance or replacement through transactional updates and rollbacks.
 
-Flight Control initially focuses on image-based Linux OSes running [bootable container images (bootc)](https://containers.github.io/bootc/), with support for [ostree](https://ostreedev.github.io/ostree/) and [rpm-ostree](https://coreos.github.io/rpm-ostree/) images planned for later. It does not update package-based OSes.
+Flight Control initially focuses on image-based Linux OSes running [bootable container images (bootc)](https://bootc-dev.github.io/bootc/), with support for [ostree](https://ostreedev.github.io/ostree/) and [rpm-ostree](https://coreos.github.io/rpm-ostree/) images planned for later. It does not update package-based OSes.
 
 At a high level, the image building process for bootc works as follows:
 
@@ -382,4 +382,4 @@ Avoid executing scripts or commands that change the file system as a side-effect
 
 ### Further References
 
-See also the guidance in the [bootc documentation](https://containers.github.io/bootc/building/guidance.html).
+See also the guidance in the [bootc documentation](https://bootc-dev.github.io/bootc/building/guidance.html).

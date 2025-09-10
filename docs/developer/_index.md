@@ -1,4 +1,8 @@
-# Flight Control
+---
+title: "FlightControl Developer Documentation"
+---
+
+# Flight Control 
 Flight Control is a service for declarative, GitOps-driven management of edge device fleets running [ostree-based](https://github.com/ostreedev/ostree) Linux system images.
 
 > [!NOTE]
