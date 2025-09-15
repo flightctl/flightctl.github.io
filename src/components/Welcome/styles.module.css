@@ -12,9 +12,8 @@
 
 .welcome {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  padding: 0% 50% 0% 5%;
 }
 
 .viewport {
@@ -38,27 +37,30 @@ p {
 }
 
 .welcomeInfo {
-  display: flexbox;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding: 5%;
-  margin-right: 25%;
+  align-items: stretch;
+  text-align: center;
   z-index: 1;
-  float: left;
+  max-width: 600px;
+  width: 100%;
 }
 
 .welcomeH1 {
-  display: inline;
   font-weight: 500;
   color: white;
   font-size: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .welcomeH2 {
   font-weight: 500;
-  padding-right: 8rem;
   line-height: 1.4;
   color: white;
   font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -71,8 +73,7 @@ p {
 .staticButton {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  justify-items: center;
+  justify-content: center;
   border-radius: 15px;
   border: none;
   margin: 12.5px 0;
@@ -84,11 +85,10 @@ p {
   color: black;
   cursor: pointer;
   transition: all 0.2s ease;
-  width: 70%;
+  width: 100%;
   @media screen and (max-width: 500px) {
     padding: 0.3rem 0.75rem;
     font-size: 0.7rem;
-    width: 100%;
   }
 }
 
