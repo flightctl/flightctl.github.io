@@ -1,8 +1,8 @@
 ---
-title: "FlightControl Developer Documentation"
+title: "Developer Documentation"
 ---
 
-# Flight Control 
+# Flight Control Developer Documentation
 Flight Control is a service for declarative, GitOps-driven management of edge device fleets running [ostree-based](https://github.com/ostreedev/ostree) Linux system images.
 
 > [!NOTE]
@@ -154,5 +154,3 @@ make deploy-e2e-extras
 ```
 
 The Prometheus web UI is then accessible on `http://localhost:9090`
-
-For detailed information about the metrics system architecture, see [Metrics Architecture](architecture/metrics.md).

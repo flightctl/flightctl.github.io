@@ -1,5 +1,5 @@
 ---
-title: "FlightControl User Documentation"
+title: "User Documentation"
 ---
 
 # Flight Control User Documentation
