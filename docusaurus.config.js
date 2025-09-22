@@ -147,8 +147,9 @@ const config = {
             title: "More",
             items: [
               {
-                label: "Blog",
-                to: "/blog",
+               label: "YouTube",
+               href: "https://www.youtube.com/@flightctl",
+               icon: "youtube",
               },
               {
                 label: "GitHub",
