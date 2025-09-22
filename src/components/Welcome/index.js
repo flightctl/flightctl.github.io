@@ -1,7 +1,9 @@
 import styles from "./styles.module.css";
 import background from "@site/static/img/background.mp4";
+import {useHistory} from "react-router-dom";
 
 export default function Welcome() {
+  const history = useHistory();
   return (
     <>
       <div className={`${styles.welcome} ${styles.viewport}`}>
@@ -22,23 +24,13 @@ export default function Welcome() {
           </h2>
           <ul>
             <li>
-              <button className={styles.staticButton} href="#">
-                Link 1
+              <button className={styles.staticButton} onClick={() => history.push("/docs/user")}>
+                User Documentation
               </button>
             </li>
             <li>
-              <button className={styles.staticButton} href="#">
-                Link 2
-              </button>
-            </li>
-            <li>
-              <button className={styles.staticButton} href="#">
-                Link 3
-              </button>
-            </li>
-            <li>
-              <button className={styles.staticButton} href="#">
-                Link 4
+              <button className={styles.staticButton} onClick={() => history.push("/docs/developer")}>
+                Developer Documentatiion
               </button>
             </li>
           </ul>
