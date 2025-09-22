@@ -117,8 +117,12 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Getting Started",
-                to: "/docs/user/getting-started",
+                label: "User Documentation",
+                to: "/docs/user/",
+              },
+              {
+                label: "Developer Documentation",
+                to: "/docs/developer/",
               },
             ],
           },
