@@ -40,7 +40,7 @@ NAME                                                  APPROVAL  APPROVER  APPROV
 
 Once approved, the device will get issued its initial management certificate and get registered to the device inventory and is now ready to be managed.
 
-## Viewing and Customizing the Device System Information
+## Viewing the Device Inventory and Device Details
 
 Flight Control automatically gathers system information from each device to help identify its hardware, OS, and environment. This data is shown in the `status.systemInfo` field. Fields can optionally be promoted to labels during the enrollment process, this must be done manually or through external automation. Promoting fields to labels enables powerful grouping and querying capabilities, such as filtering devices by region or OS version. You can also define your own fields in `status.systemInfo.customInfo`, allowing the agent to collect user-defined metadata through custom commands.
 
@@ -947,7 +947,7 @@ Each schedule supports:
 | `timeZone`             | (Optional) The time zone used to evaluate the schedule. Defaults to the device’s local system time zone. Must be a valid [IANA time zone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). |
 | `startGraceDuration`   | (Optional) A duration string that extends the allowed start time window after a schedule trigger. Follows the [Go duration format](https://pkg.go.dev/time#ParseDuration), such as `"1h"` or `"45m"`. |
 
-The Flight Control agent evaluates these schedules during its control loop to determine whether each policy is currently allowed to proceed. While the device waits for the update window the device status will read `OutOfDate`. For more details please see [Device API Statuses](device-api-statuses.md#device-api-statuses).
+The Flight Control agent evaluates these schedules during its control loop to determine whether each policy is currently allowed to proceed. While the device waits for the update window the device status will read `OutOfDate`. For more details please see [Device API Statuses](device-api-statuses.md).
 
 >[!TIP]
 > Use [crontab guru](https://crontab.guru/) to create and test cron expressions interactively.

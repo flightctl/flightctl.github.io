@@ -174,7 +174,7 @@ FC_API_URL=<API_URL>
 
 ```
 
-For managing ongoing Flight Control deployments including upgrades, rollbacks, and monitoring, refer to the [Helm Chart Documentation](../../deploy/helm/flightctl/README.md#upgrade-chart).
+For managing ongoing Flight Control deployments including upgrades and monitoring, refer to the [Helm Chart Documentation](https://github.com/flightctl/flightctl/blob/main/deploy/helm/flightctl/README.md).
 
 ## Installing the Flight Control CLI
 
