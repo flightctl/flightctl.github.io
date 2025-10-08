@@ -174,6 +174,8 @@ FC_API_URL=<API_URL>
 
 ```
 
+For managing ongoing Flight Control deployments including upgrades, rollbacks, and monitoring, refer to the [Helm Chart Documentation](../../deploy/helm/flightctl/README.md#upgrade-chart).
+
 ## Installing the Flight Control CLI
 
 In a terminal, select the appropriate Flight Control CLI binary for your OS (linux or darwin) and CPU architecture (amd64 or arm64), for example:
@@ -258,7 +260,7 @@ The CLI uses the host's certificate authority (CA) pool to verify the Flight Con
 
 ## Building a Bootable Container Image including the Flight Control Agent
 
-Next, we will use [Podman](https://github.com/containers/podman) to build a [bootable container image (bootc)](https://bootc-dev.github.io/bootc/) that includes the Flight Control Agent binary and configuration. The configuration contains the connection details and credentials required by the agent to discover the service and send an enrollment request to the service.
+Next, we will use [Podman](https://github.com/containers/podman) to build a [bootable container image (bootc)](https://containers.github.io/bootc/) that includes the Flight Control Agent binary and configuration. The configuration contains the connection details and credentials required by the agent to discover the service and send an enrollment request to the service.
 
 Retrieve the agent configuration with enrollment credentials by running:
 
@@ -287,7 +289,7 @@ $ cat Containerfile
 
 FROM quay.io/centos-bootc/centos-bootc:stream9
 
-RUN dnf -y copr enable @redhat-et/flightctl && \
+RUN dnf -y config-manager --add-repo https://rpm.flightctl.io/flightctl-epel.repo && \
     dnf -y install flightctl-agent; \
     dnf -y clean all; \
     systemctl enable flightctl-agent.service
@@ -373,8 +375,8 @@ After the enrollment completes, you can find the device in the list of devices:
 ```console
 $ flightctl get devices
 
-NAME                                                  OWNER   SYSTEM  UPDATED     APPLICATIONS  LAST SEEN
-54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg  <none>  Online  Up-to-date  <none>        3 seconds ago
+NAME                                                  OWNER   SYSTEM  UPDATED     APPLICATIONS
+54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg  <none>  Online  Up-to-date  <none>
 ```
 
 ## Where to go from here

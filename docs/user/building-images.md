@@ -7,7 +7,7 @@ Image-based OSes allow the whole OS (and optionally also OS configuration and ap
 * It minimizes potential drift between what has been thoroughly tested and what is deployed to a large number of devices.
 * It minimizes the risk of failed updates that require expensive maintenance or replacement through transactional updates and rollbacks.
 
-Flight Control initially focuses on image-based Linux OSes running [bootable container images (bootc)](https://bootc-dev.github.io/bootc/), with support for [ostree](https://ostreedev.github.io/ostree/) and [rpm-ostree](https://coreos.github.io/rpm-ostree/) images planned for later. It does not update package-based OSes.
+Flight Control initially focuses on image-based Linux OSes running [bootable container images (bootc)](https://containers.github.io/bootc/), with support for [ostree](https://ostreedev.github.io/ostree/) and [rpm-ostree](https://coreos.github.io/rpm-ostree/) images planned for later. It does not update package-based OSes.
 
 At a high level, the image building process for bootc works as follows:
 
@@ -20,9 +20,9 @@ At a high level, the image building process for bootc works as follows:
 4. Build, publish, and sign an **OS disk image** using `bootc-image-builder` (bib) and `skopeo`.
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/flightctl/flightctl/main/docs/images/image-building.svg"/>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/flightctl/flightctl/main/docs/images/image-building-dark.svg"/>
-  <img alt="Diagram of image building process" src="https://raw.githubusercontent.com/flightctl/flightctl/main/docs/images/image-building.svg"/>
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/flightctl/flightctl/main/docs/images/image-building.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/flightctl/flightctl/main/docs/images/image-building-dark.svg">
+  <img alt="Diagram of image building process" src="https://raw.githubusercontent.com/flightctl/flightctl/main/docs/images/image-building.svg">
 </picture>
 
 The OS disk image is used to image (or "flash") a device when it is provisioned. For subsequent device updates, only the OS image (bootc) is required. This is because bootc is a *file system* image, that is it contains just the files in the file system including their attributes, but the disk layout (partitions, volumes) and file systems need to have been created first. The OS disk image includes everything, the disk layout, bootloader, file systems, and the files in the OS image (bootc). It can therefore be written verbatim to the device's drive.
@@ -36,6 +36,7 @@ Before you start, ensure you have installed the following prerequisites:
 * `flightctl` CLI latest version ([installation guide](getting-started.md#installing-the-flight-control-cli))
 * `podman` version 5.0 or higher ([installation guide](https://podman.io/docs/installation))
 * `skopeo` version 1.14 or higher ([installation guide](https://github.com/containers/skopeo/blob/main/install.md))
+* `container-selinux` version 2.241 or higher (required by `bootc-image-builder`)
 
 ### Choosing an Enrollment Method
 
@@ -88,7 +89,7 @@ Create a file named `Containerfile` with the following content to build an OS im
 ```console
 FROM quay.io/centos-bootc/centos-bootc:stream9
 
-RUN dnf -y copr enable @redhat-et/flightctl && \
+RUN dnf -y config-manager --add-repo https://rpm.flightctl.io/flightctl-epel.repo && \
     dnf -y install flightctl-agent && \
     dnf -y clean all && \
     systemctl enable flightctl-agent.service
@@ -129,7 +130,7 @@ When using Flight Control with a RHEL 9 base image, you need to make a few chang
 ```console
 FROM registry.redhat.io/rhel9/rhel-bootc:9.5
 
-RUN dnf -y copr enable @redhat-et/flightctl && \
+RUN dnf -y config-manager --add-repo https://rpm.flightctl.io/flightctl-epel.repo && \
     dnf -y install flightctl-agent && \
     dnf -y clean all && \
     systemctl enable flightctl-agent.service && \
@@ -246,7 +247,7 @@ Create a file named `Containerfile` with the following content to build an OS im
 ```console
 FROM quay.io/centos-bootc/centos-bootc:stream9
 
-RUN dnf -y copr enable @redhat-et/flightctl && \
+RUN dnf -y config-manager --add-repo https://rpm.flightctl.io/flightctl-epel.repo && \
     dnf -y install flightctl-agent && \
     dnf -y clean all && \
     systemctl enable flightctl-agent.service
@@ -321,7 +322,7 @@ Create a file named `Containerfile` with the following content to build an OS im
 ```console
 FROM quay.io/centos-bootc/centos-bootc:stream9
 
-RUN dnf -y copr enable @redhat-et/flightctl && \
+RUN dnf -y config-manager --add-repo https://rpm.flightctl.io/flightctl-epel.repo && \
     dnf -y install flightctl-agent && \
     dnf -y clean all && \
     systemctl enable flightctl-agent.service
@@ -382,4 +383,4 @@ Avoid executing scripts or commands that change the file system as a side-effect
 
 ### Further References
 
-See also the guidance in the [bootc documentation](https://bootc-dev.github.io/bootc/building/guidance.html).
+See also the guidance in the [bootc documentation](https://containers.github.io/bootc/building/guidance.html).

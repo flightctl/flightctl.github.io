@@ -71,11 +71,24 @@ flightctl get devices
 The output will be a table similar to this:
 
 ```console
-NAME                                                  ALIAS    OWNER   SYSTEM  UPDATED     APPLICATIONS  LAST SEEN
-54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg  <none>   <none>  Online  Up-to-date  <none>        3 seconds ago
+NAME                                                  ALIAS    OWNER   SYSTEM  UPDATED     APPLICATIONS
+54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg  <none>   <none>  Online  Up-to-date  <none>
 ```
 
-You can see the details of this device in YAML format by running the following command:
+You can see one or more specific devices in the inventory using any of these formats:
+
+```console
+# Single device using slash format
+flightctl get device/54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg
+
+# Single device using space format
+flightctl get device 54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg
+
+# Multiple devices by name
+flightctl get devices device1 device2 device3
+```
+
+To see the details of a single device or list of devices in YAML or JSON formats, you can specify the `-o yaml` or `-o json` flags, respectively, e.g.
 
 ```console
 flightctl get device/54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg -o yaml
@@ -165,9 +178,9 @@ flightctl get devices -o wide
 ```
 
 ```console
-NAME                                                  ALIAS    OWNER   SYSTEM  UPDATED     APPLICATIONS  LAST SEEN      LABELS
-54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg  <none>   <none>  Online  Up-to-date  <none>        3 seconds ago  region=eu-west-1,site=factory-berlin
-hnsu33339f8m5pjqrbh5ak704jjp92r95a83sd5ja8cjnsl7qnrg  <none>   <none>  Online  Up-to-date  <none>        1 minute ago   region=eu-west-1,site=factory-madrid
+NAME                                                  ALIAS    OWNER   SYSTEM  UPDATED     APPLICATIONS  LABELS
+54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg  <none>   <none>  Online  Up-to-date  <none>        region=eu-west-1,site=factory-berlin
+hnsu33339f8m5pjqrbh5ak704jjp92r95a83sd5ja8cjnsl7qnrg  <none>   <none>  Online  Up-to-date  <none>        region=eu-west-1,site=factory-madrid
 ```
 
 You can view devices in your inventory with a specific label or set of labels by using the `-l key=value` option one or more times:
@@ -177,11 +190,39 @@ flightctl get devices -l site=factory-berlin -o wide
 ```
 
 ```console
-NAME                                                  ALIAS    OWNER   SYSTEM  UPDATED     APPLICATIONS  LAST SEEN      LABELS
-54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg  <none>   <none>  Online  Up-to-date  <none>        3 seconds ago  region=eu-west-1,site=factory-berlin
+NAME                                                  ALIAS    OWNER   SYSTEM  UPDATED     APPLICATIONS  LABELS
+54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg  <none>   <none>  Online  Up-to-date  <none>        region=eu-west-1,site=factory-berlin
 ```
 
-You can update the labels of a given device by exporting the device's current definition into a file, editing the specification to update the labels, and then applying the updated definition. To export the device's current definition into a file called `my_device.yaml`, run the `flightctl get device` command with the device's name and the `-o yaml` output flag:
+You can update the labels of a given device using one of two methods:
+
+### Method 1: Using the edit command (Recommended)
+
+The `flightctl edit` command provides a streamlined way to edit resources directly in your preferred text editor, similar to `kubectl edit`. This command automatically fetches the current resource definition, opens it in an editor, and applies your changes when you save and exit:
+
+```console
+flightctl edit device/54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg
+```
+
+This will open the device definition in your default editor (defined by `FLIGHTCTL_EDITOR`, `EDITOR` environment variables, or defaults to `vi`). You can also specify a different editor:
+
+```console
+flightctl edit device/54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg --editor=nano
+```
+
+The command supports both `TYPE/NAME` and `TYPE NAME` formats:
+
+```console
+# Both of these are equivalent:
+flightctl edit device/my-device
+flightctl edit device my-device
+```
+
+When you save and exit the editor, the command will automatically apply your changes to the server. If there are any errors (such as validation failures or conflicts), your changes will be saved to a temporary file for recovery.
+
+### Method 2: Export, edit, and apply manually
+
+Alternatively, you can update labels by exporting the device's current definition into a file, editing the specification to update the labels, and then applying the updated definition. To export the device's current definition into a file called `my_device.yaml`, run the `flightctl get device` command with the device's name and the `-o yaml` output flag:
 
 ```console
 flightctl get device/54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg -o yaml > my_device.yaml
@@ -210,9 +251,9 @@ flightctl apply -f my_device.yaml
 When you now view the device's labels using `flightctl get devices -o wide` once more, you should see your changes applied:
 
 ```console
-NAME                                                  ALIAS    OWNER   SYSTEM  UPDATED     APPLICATIONS  LAST SEEN      LABELS
-54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg  <none>   <none>  Online  Up-to-date  <none>        3 minutes ago  some_key=some_value,some_other_key=some_other_value
-hnsu33339f8m5pjqrbh5ak704jjp92r95a83sd5ja8cjnsl7qnrg  <none>   <none>  Online  Up-to-date  <none>        4 minutes ago  region=eu-west-1,site=factory-madrid
+NAME                                                  ALIAS    OWNER   SYSTEM  UPDATED     APPLICATIONS  LABELS
+54shovu028bvj6stkovjcvovjgo0r48618khdd5huhdjfn6raskg  <none>   <none>  Online  Up-to-date  <none>        some_key=some_value,some_other_key=some_other_value
+hnsu33339f8m5pjqrbh5ak704jjp92r95a83sd5ja8cjnsl7qnrg  <none>   <none>  Online  Up-to-date  <none>        region=eu-west-1,site=factory-madrid
 ```
 
 ## Updating the OS
@@ -336,6 +377,48 @@ You can now reference this Repository when you configure devices. For example, t
 | Repository | site-settings |
 | TargetRevision | production |
 | Path | /factory-a |
+
+#### Configuring SSH Access for Private Repositories  
+  
+If your Git repository requires SSH authentication, you need to configure SSH known hosts to ensure secure connections.
+
+First, create a `known_hosts` file containing the SSH host keys for your Git server. You can obtain these keys by running:
+
+```console
+ssh-keyscan github.com >> known_hosts
+ssh-keyscan gitlab.com >> known_hosts
+ssh-keyscan private-git-server.com >> known_hosts
+```
+
+Example `known_hosts` file content:
+
+```text
+github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+```
+
+Once you have created the `known_hosts` file, deploy it to Flight Control based on your deployment method:
+
+**For Helm deployments:** Use `--set-file` to include the `known_hosts` file in your deployment:
+
+```console
+helm upgrade --install --version=<version-to-install> \
+    --namespace flightctl --create-namespace \
+    flightctl oci://quay.io/flightctl/charts/flightctl \
+    --set-file global.sshKnownHosts.data=known_hosts
+```
+
+**For Quadlet deployments:** Place the file on the host at `/etc/flightctl/ssh/known_hosts`:
+
+```console
+sudo install -m 0644 known_hosts /etc/flightctl/ssh/known_hosts
+```
+
+> [!NOTE]
+> If the services are already running and you're updating the configuration, restart them to apply the changes:
+>
+> ```console
+> sudo systemctl restart flightctl-worker.service flightctl-periodic.service
+> ```
 
 ### Getting Secrets from a Kubernetes Cluster
 
@@ -734,7 +817,7 @@ Alert rules take the following parameters:
 | Severity | The alert rule's severity level out of "Info", "Warning", or "Critical". Only one alert rule is allowed per severity level and monitor. |
 | Duration | The duration that resource utilization is measured and averaged over when sampling, specified as positive integer followed by a time unit ('s' for seconds, 'm' for minutes, 'h' for hours). Must be smaller than the sampling interval. |
 | Percentage | The utilization threshold that triggers the alert, as percentage value (range 0 to 100 without the "%" sign). |
-| Description | A human-readable description of the alert. This is useful for adding details about the alert that might help with debugging. By default it populates the alert as `<severity>: <type> load is above <percentage>>% for more than <duration>`  |
+| Description | A human-readable description of the alert. This is useful for adding details about the alert that might help with debugging. By default it populates the alert as `<severity>: <type> load is above <percentage>>% for more than <duration>` |
 
 ### Monitoring Device Resources on the Web UI
 
