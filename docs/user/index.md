@@ -1,7 +1,3 @@
----
-title: "User Documentation"
----
-
 # User Documentation
 
 Welcome to the Flight Control user documentation.

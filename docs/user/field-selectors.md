@@ -61,7 +61,7 @@ flightctl get devices --field-selector 'metadata.owner=Fleet/pos-fleet, status.u
 ### Fields Discovery
 
 Some Flight Control resources might expose additional supported fields. You can discover the supported fields by using `flightctl` with the `--field-selector` option. If you attempt to use an unsupported field, the error message will list the available supported fields.
-xe
+
 For example:
 
 ```bash

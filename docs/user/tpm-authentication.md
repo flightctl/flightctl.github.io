@@ -221,7 +221,7 @@ service:
 > [!NOTE]
 > Different TPM manufacturers provide their CA certificates in various locations:
 >
-> - **Infineon**: https://www.infineon.com/cms/en/product/security-smart-card-solutions/optiga-embedded-security-solutions/
+> - **Infineon**: [https://www.infineon.com/cms/en/product/security-smart-card-solutions/optiga-embedded-security-solutions/](https://www.infineon.com/cms/en/product/security-smart-card-solutions/optiga-embedded-security-solutions/)
 > - **STMicroelectronics**: See [Technical Note TN1330](https://www.st.com/resource/en/technical_note/tn1330-st-trusted-platform-module-tpm-endorsement-key-ek-certificates-stmicroelectronics.pdf) for certificates
 > - **Nuvoton**: Available through Nuvoton support portal
 
