@@ -100,12 +100,12 @@ const config = {
           srcDark: "img/flight-control-horizontal-logo-one-color-light-blue.png",
         },
         items: [
-          {
-            type: "docSidebar",
-            sidebarId: "tutorialSidebar",
-            position: "left",
-            label: "Docs",
-          },
+          // {
+          //   type: "docSidebar",
+          //   sidebarId: "tutorialSidebar",
+          //   position: "left",
+          //   label: "Docs",
+          // },
           {
             type: 'html',
             position: 'right',
@@ -118,19 +118,19 @@ const config = {
       footer: {
         style: "dark",
         links: [
-          {
-            title: "Docs",
-            items: [
-              {
-                label: "User Documentation",
-                to: "/docs/user/",
-              },
-              {
-                label: "Developer Documentation",
-                to: "/docs/developer/",
-              },
-            ],
-          },
+          // {
+          //   title: "Docs",
+          //   items: [
+          //     {
+          //       label: "User Documentation",
+          //       to: "/docs/user/",
+          //     },
+          //     {
+          //       label: "Developer Documentation",
+          //       to: "/docs/developer/",
+          //     },
+          //   ],
+          // },
           // {
           //   title: "Community",
           //   items: [
