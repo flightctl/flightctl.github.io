@@ -22,7 +22,7 @@ export default function Welcome() {
           <h2 className={styles.welcomeH2}>
             Open Source Fleet Management for Edge Devices
           </h2>
-          <ul>
+          {/* <ul>
             <li>
               <button className={styles.staticButton} onClick={() => history.push("/docs/user")}>
                 User Documentation
@@ -33,7 +33,7 @@ export default function Welcome() {
                 Developer Documentatiion
               </button>
             </li>
-          </ul>
+          </ul> */}
         </div>
       </div>
     </>
