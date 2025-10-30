@@ -106,7 +106,6 @@ const config = {
             position: "left",
             label: "Docs",
           },
-          { to: "https://www.youtube.com/@flightctl", label: "YouTube", position: "left" },
           {
             type: 'html',
             position: 'right',
