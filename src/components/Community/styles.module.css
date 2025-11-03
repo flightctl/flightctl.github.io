@@ -38,7 +38,7 @@
 .subtitle {
   font-size: 1.3rem;
   color: #666;
-  max-width: 700px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -91,6 +91,7 @@
   transform: translateY(-8px);
   box-shadow: 0 12px 35px rgba(27, 168, 255, 0.2);
   border-color: rgba(27, 168, 255, 0.3);
+  text-decoration: none;
 }
 
 [data-theme="dark"] .resourceCard:hover {
@@ -133,8 +134,8 @@
 }
 
 .resourceCard:hover .resourceLink {
-  transform: translateX(5px);
   display: inline-block;
+  text-decoration: underline;
 }
 
 /* CTA Box */

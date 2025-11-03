@@ -16,7 +16,7 @@ const resources = [
     icon: <FontAwesomeIcon icon={faUsers} />,
     title: "Community",
     description: "Join discussions and get help from the community",
-    link: "https://github.com/flightctl/flightctl/discussions",
+    link: "#",
     linkText: "Join Discussion",
     external: true,
   },
