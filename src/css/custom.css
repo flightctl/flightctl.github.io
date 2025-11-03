@@ -52,7 +52,7 @@
   --ifm-color-primary-lightest: #70c8ff;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --ifm-pre-background: #1ba8ff;
-  background-color: #262626;
+  background-color: #0B192C;
 }
 
 /* Global layout styles for components */
@@ -61,11 +61,32 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 ul {
   list-style: none;
   padding: 0;
 }
 
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Better focus states for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
 .footer--dark {
-  --ifm-footer-background-color: #262626 !important;
+  --ifm-footer-background-color: #0B192C !important;
+}
+
+/* Improve main content area */
+main {
+  overflow-x: hidden;
 }
