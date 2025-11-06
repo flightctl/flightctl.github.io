@@ -54,6 +54,12 @@ export default function Welcome() {
             >
               View on GitHub
             </button>
+            <button 
+              className={`${styles.staticButton} ${styles.secondaryButton}`} 
+              onClick={() => window.open("https://www.youtube.com/@flightctl", "_blank")}
+            >
+              View our YouTube channel
+            </button>
           </div>
           <button 
             className={styles.scrollButton}
