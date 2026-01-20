@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import background from "@site/static/img/background.mp4";
+import background from "@site/static/img/background-2.mp4";
 import flightControlLogo from "@site/static/img/flight-control-horizontal-logo-one-color-white.png";
 import {useHistory} from "react-router-dom";
 
@@ -17,16 +17,16 @@ export default function Welcome() {
   return (
     <>
       <div className={`${styles.welcome} ${styles.viewport}`}>
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-          preload="auto"
-          className={styles.backgroundVideo}
-        >
-          <source src={background} type="video/mp4" />
-        </video>
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            preload="auto"
+            className={styles.backgroundVideo}
+          >
+            <source src={background} type="video/mp4" />
+          </video>
         <div className={styles.welcomeInfo}>
           <img src={flightControlLogo} alt="FlightControl Logo" className={styles.flightControlLogo} />
           <h2 className={styles.welcomeH2}>
