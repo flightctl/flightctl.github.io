@@ -79,14 +79,14 @@ const config = {
     ],
   ],
 
-  plugins: [
-    [
-      require.resolve("docusaurus-lunr-search"),
-      {
-        languages: ["en"],
-      },
-    ],
-  ],
+  // plugins: [
+  //   [
+  //     require.resolve("docusaurus-lunr-search"),
+  //     {
+  //       languages: ["en"],
+  //     },
+  //   ],
+  // ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
