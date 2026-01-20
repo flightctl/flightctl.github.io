@@ -15,7 +15,7 @@ export default function Home() {
       <main>
         <Welcome />
         <About2 />
-        <Community />
+        {/* <Community /> */}
       </main>
     </Layout>
   );
